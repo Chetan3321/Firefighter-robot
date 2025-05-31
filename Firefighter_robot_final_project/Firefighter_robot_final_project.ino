@@ -35,7 +35,7 @@ void setup() {
 
     // Set relay as output
     pinMode(RELAY_PIN, OUTPUT);
-    digitalWrite(RELAY_PIN, LOW);  // Ensure relay (pump) is OFF at startup
+    digitalWrite(RELAY_PIN, HIGH);  // Ensure relay (pump) is OFF at startup
 
     // Initialize servo motor
     waterServo.attach(SERVO_PIN);
@@ -127,7 +127,7 @@ void stopMotors() {
 // Function to activate water pump and move servo
 void activateWaterPump() {
     Serial.println("🚰 Activating Water Pump...");
-    digitalWrite(RELAY_PIN, HIGH);  // Turn ON the water pump
+    digitalWrite(RELAY_PIN, LOW);  // Turn ON the water pump
 
     // Move the servo from left to right
     for (int pos = 60; pos <= 120; pos += 5) {  
@@ -148,6 +148,6 @@ void activateWaterPump() {
 // Function to deactivate water pump
 void deactivateWaterPump() {
     Serial.println("✅ Deactivating Water Pump...");
-    digitalWrite(RELAY_PIN, LOW);  // Turn OFF the water pump
+    digitalWrite(RELAY_PIN, HIGH);  // Turn OFF the water pump
     waterServo.write(90);  // Reset servo to center position
 }
